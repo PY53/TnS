@@ -1,0 +1,54 @@
+<div class="container">
+   <h1>TnS</h1>
+   <h2>Enter your new task here</h2>
+   <form method="POST" action="/" >
+      <input type="text" name="taskName" id="task" placeholder="Task Name" required>
+	  <input type="text" name="projectId" id="task" placeholder="project Id" required>
+	  <input type="text" name="fellowId" id="task" placeholder="fellow Id" required>
+	  <input type="date" name="startDate" id="task" placeholder="start Date" required>
+	  <input type="date" name="endDate" id="task" placeholder="end Date" required>
+      <button type="submit" id="submit">Add Task</button>
+   </form>
+   <div id="tasks_container">
+		<table id="NewTask" class="styled-table">
+		<caption>Tasks List</caption>
+			<thead>
+			<tr>
+				<th>Task Name</th>
+				<th>Project Id</th>
+				<th>Fellow Name</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>trash</th>
+				<th>Status</th>
+			</tr>
+			</thead>
+			<tbody>
+			{{#each items}}
+			{{#if (isCompleted status)}}
+			<tr class="completed">		
+				<td>{{taskName}}</td>
+				<td>{{projectId}}</td>
+				<td>{{projectId}}</td>
+				<td>{{dateFormat startDate}}</td>
+				<td>{{dateFormat endDate}}</td>
+				<td><a href="/{{taskId}}"><i class="fa fa-trash"></i></a></td>
+				<td><a href="/ongoing/{{taskId}}">Mark it as ongoing</a></td>
+			</tr>
+			{{else}}
+			<tr class="ongoing">
+				<td>{{taskName}}</td>
+				<td>{{projectId}}</td>			
+				<td>{{projectId}}</td>
+				<td>{{dateFormat startDate}}</td>
+				<td>{{dateFormat endDate}}</td>
+				<td><a href="/{{taskId}}"><i class="fa fa-trash"></i></a></td>
+				<td><a href="/completed/{{taskId}}">Mark it as complete</a></td>
+			</tr>
+			{{/if}}
+			{{/each}}
+			</tbody>
+		</table>
+		
+   </div>
+</div>
